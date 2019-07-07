@@ -5,7 +5,8 @@ import Book from '../../utils/Book.js'
 class Search extends Component {
 
   state = {
-    books: []
+    books: [],
+    searchInput: ''
   }
 
   handleGetBooks = _ => {
@@ -20,13 +21,15 @@ class Search extends Component {
       .catch(e => console.log(e))
   }
 
+  handleInputChange = event => {
+    this.setState({ [event.target.id]: event.target.value })
+  }
+
   render() {
     return (
       <>
-        <h1>hello testing</h1>
-        <nav>
-          <button onClick={this.handleGetBookss}>View Stacks</button>
-        </nav>
+        <input type="text" name="search" id="searchInput" onChange={this.handleInputChange} />
+        <button id="search" onClick={this.handleGetBooks}>Search</button>
         {
           this.state.books.map(book => {
             return (
