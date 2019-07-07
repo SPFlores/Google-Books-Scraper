@@ -1,17 +1,39 @@
 import React, { Component } from 'react'
-import Stack from '../../utils/Book.js'
-
+import Book from '../../utils/Book.js'
 class Saved extends Component {
-  componentDidMount = _ => {
-    Stack.getSaved()
-      .then(({ data: stacks }) => this.setState({ stacks }))
+  state = {
+    books: []
+  }
+
+  handleGetFavotires = _ => {
+    Book.getSaved()
+      .then(({ data: books }) => this.setState({ books }))
       .catch(e => console.log(e))
+  }
+
+  componentDidMount = _ => {
+    this.handleGetFavotires()
   }
 
   render() {
     return (
       <>
-        <h1>hello there</h1>
+        {
+          this.state.books.map(book => {
+            return (
+              <div key={book._id}>
+                <p>{book.title}</p>
+                <p>{book.authors}</p>
+                <p>{book.image}</p>
+                <p>{book.description}</p>
+                <p>{book.link}</p>
+                {
+                  book.favorite ? null : <button onclick={this.handleAddSaved} id={book._id}>Add favorite</button>
+                }
+              </div>
+            )
+          })
+        }
       </>
     )
   }

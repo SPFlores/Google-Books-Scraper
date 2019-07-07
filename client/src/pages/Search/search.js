@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import Book from '../../utils/Book.js'
 
-
 class Search extends Component {
 
   state = {
@@ -11,13 +10,13 @@ class Search extends Component {
 
   handleGetBooks = _ => {
     Book.getBooks()
-      .then(({ data }) => this.setState({ data }))
-      .catch(e => console.localStorage(e))
+      .then(({ data: books }) => this.setState({ books }))
+      .catch(e => console.log(e))
   }
 
   handleAddSaved = event => {
     Book.addSaved(event.target.id)
-      .then(_ => this.handleGetStacks())
+      .then(_ => this.handleGetBooks())
       .catch(e => console.log(e))
   }
 
@@ -30,6 +29,7 @@ class Search extends Component {
       <>
         <input type="text" name="search" id="searchInput" onChange={this.handleInputChange} />
         <button id="search" onClick={this.handleGetBooks}>Search</button>
+        {/* the below would be the general element I would need to render from each book in the DB, I'm just having trouble connecting everything */}
         {
           this.state.books.map(book => {
             return (
