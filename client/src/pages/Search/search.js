@@ -10,6 +10,7 @@ class Search extends Component {
 
   handleGetBooks = _ => {
     Book.getBooks()
+    // not sure how to put my search term into this in the req.body, but I have some of it built out in the routes file
       .then(({ data: books }) => this.setState({ books }))
       .catch(e => console.log(e))
   }

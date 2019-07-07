@@ -4,6 +4,7 @@ const axios = require('axios')
 module.exports = app => {
   // get all books
   app.get('/books', (req, res) => {
+    // not sure how to put my search term into this in the req.body, but this would be the general way it should go I think
     axios.get(`https://www.googleapis.com/books/v1/volumes?q=${req.body}&key=${process.env.API_KEY}`)
       .then(({ data }) => {
         Book.find({})
