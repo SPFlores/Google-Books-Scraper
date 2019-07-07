@@ -1,3 +1,3 @@
 module.exports = app => {
-  require('./stackRoutes.js')(app)
+  require('./bookRoutes.js')(app)
 }

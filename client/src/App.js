@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
-import Main from './pages/Main'
+import Search from './pages/Search'
 import Saved from './pages/Saved'
 
 const App = _ => {
@@ -9,13 +9,14 @@ const App = _ => {
       <Router>
         <div>
           <nav>
-            <Link to='/' > Main </Link>
+            <Link to='/' > Search </Link>
             <Link to='/saved' >Saved</Link>
           </nav>
-          <Route exact path='/' component={_ => <Main />} />
+          <Route exact path='/' component={_ => <Search />} />
           <Route path='/saved' component={_ => <Saved />} />
         </div>
       </Router>
+      
     </>
   )
 }

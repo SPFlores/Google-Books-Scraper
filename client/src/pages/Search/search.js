@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import Book from '../../utils/Book.js'
 
 
-class Main extends Component {
+class Search extends Component {
 
   state = {
-    stack: []
+    books: []
   }
 
   handleGetBooks = _ => {
@@ -23,7 +23,11 @@ class Main extends Component {
   render() {
     return (
       <>
-        {/* {
+        <h1>hello testing</h1>
+        <nav>
+          <button onClick={this.handleGetBookss}>View Stacks</button>
+        </nav>
+        {
           this.state.books.map(book => {
             return (
               <div key={book._id}>
@@ -38,11 +42,10 @@ class Main extends Component {
               </div>
             )
           })
-        } */}
-        <h1>hello testing</h1>
+        }
       </>
     )
   }
 }
 
-export default Main
+export default Search
